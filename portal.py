@@ -44,7 +44,7 @@ class TestData(Resource):
         testData["userId"] = getTestUser(i)
         testData["actualRating"] = getTestActualRating(i)
         testData["businessId"] = getTestBusiness(i)
-        #testData["review"]= getTestDocCSR(i)
+        testData["reviewFull"]= getTestDoc(i)
         testData["testDataSampleId"]= i
         return testData
 
@@ -59,7 +59,7 @@ class PredictTestData(Resource):
         predictedResponse["userId"] = userId
         predictedResponse["actualRating"] = actualRating 
         predictedResponse["businessId"] = businessId
-        #predictedResponse["reviewCSR"] = reviewCSR
+        predictedResponse["reviewFull"] = test_docs[int(testDataId)]
         predictedResponse["predictedRating"] = p
         return predictedResponse
 

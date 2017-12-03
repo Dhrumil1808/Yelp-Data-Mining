@@ -1,10 +1,10 @@
 from testDataDirectory import *
-from trainDataDirectory import *
+from globalTrainDataDirectory import *
 from util import *
 from sklearn.neighbors import KNeighborsRegressor
 
 neigh = KNeighborsRegressor(n_neighbors=3)
-neigh.fit(getTrainAllDocCSR(), map(float,getTrainAllActualRating()))
+neigh.fit(getTrainGlobalAllDocCSR(), map(float,getTrainGlobalAllActualRating()))
 
 def predict_global_rating(reviewCSR):
     predicted = neigh.predict(reviewCSR)

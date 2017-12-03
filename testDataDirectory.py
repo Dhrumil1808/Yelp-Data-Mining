@@ -1,11 +1,12 @@
 from util import *
 
 
-test_filename = 'pickle/'
+test_filename = 'pickle/test/uid/'
 test_user = load_pickle(test_filename+'userid.pickle')
 test_ratings = load_pickle(test_filename+'rating.pickle')
 test_business = load_pickle(test_filename+'business.pickle')
 test_docs_csr = load_pickle(test_filename+'docs_csr.pickle')
+test_docs = load_pickle(test_filename +'docs_full.pickle')
 test_unique_users = set(test_user)
 test_unique_business = set(test_business)
 
@@ -32,6 +33,9 @@ def getTestActualRating(i):
 
 def getTestDocCSR(i):
     return test_docs_csr[i]
+
+def getTestDoc(i):
+    return test_docs[i]
 
 def getTestUniqueUsers():
     return test_unique_users

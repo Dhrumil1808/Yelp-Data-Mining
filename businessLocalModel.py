@@ -1,5 +1,5 @@
+from trainBusinessDataDirectory import *
 from testDataDirectory import *
-from trainDataDirectory import *
 from util import *
 from sklearn.neighbors import KNeighborsRegressor
 
@@ -7,10 +7,10 @@ def getBusinessTrainData(businessId):
     reviewrows =[]
     reviewratings=[]
     counter=0
-    for b in getTestAllBusiness():
+    for b in getTrainBusinessAllBusiness():
         if(b==businessId):
             reviewrows.append(counter) 
-            reviewratings.append(float(getTrainAllActualRating()[counter]))
+            reviewratings.append(float(getTrainBusinessAllActualRating()[counter]))
         counter=counter+1
         
     return reviewrows,reviewratings
@@ -29,7 +29,7 @@ def getBusinessTestData(businessId):
 
 def predict_business_local_rating(businessId,reviewCSR):
     reviewrows,reviewratings = getBusinessTrainData(businessId)
-    review_csr_x=getTrainAllDocCSR()[reviewrows]
+    review_csr_x=getTrainBusinessAllDocCSR()[reviewrows]
     neigh = KNeighborsRegressor(n_neighbors=3)
     neigh.fit(review_csr_x, reviewratings) 
     

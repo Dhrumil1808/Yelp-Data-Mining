@@ -1,7 +1,7 @@
 from util import *
 
 
-train_filename = 'pickle/'
+train_filename = 'pickle/train/uid/'
 train_user = load_pickle(train_filename+'userid.pickle')
 train_ratings = load_pickle(train_filename+'rating.pickle')
 train_business = load_pickle(train_filename+'business.pickle')
