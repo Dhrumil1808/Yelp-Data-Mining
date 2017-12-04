@@ -42,4 +42,3 @@ def getTestUniqueUsers():
 
 def getTestUniqueBusiness():
     return test_unique_business
-
