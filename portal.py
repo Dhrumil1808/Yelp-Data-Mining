@@ -57,7 +57,7 @@ class PredictTestData(Resource):
         p = predictRating(userId, businessId, reviewCSR)
         predictedResponse = {}
         predictedResponse["userId"] = userId
-        predictedResponse["actualRating"] = actualRating 
+        predictedResponse["actualRating"] = actualRating
         predictedResponse["businessId"] = businessId
         predictedResponse["reviewFull"] = test_docs[int(testDataId)]
         predictedResponse["predictedRating"] = p
@@ -98,6 +98,12 @@ class TodoList(Resource):
 ##
 ## Actually setup the Api resource routing here
 ##
+
+class MainPage():
+    def get():
+        return render_template('index.html')
+
+api.add_resource(MainPage,'/')
 api.add_resource(TodoList, '/todos')
 api.add_resource(Todo, '/todos/<id>')
 api.add_resource(TestData, '/testData')
