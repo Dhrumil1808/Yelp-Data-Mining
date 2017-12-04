@@ -58,6 +58,6 @@ def predict_user_local_rating(userid,reviewdata):
             ans[clf_names[i]] = predicted[0]
     return ans
 
-ans =predict_user_local_rating("C8W0VzsXaTg4YvciNTy3bg","I agree with most of the reviews. Great food, really cheap, absolutely worth it.  Seems like there is very little or no msg on their food. On the downside, msg does enhance the flavor so I did find the everything a tad blander than in a typical hakka restaurant. On the upside, there is no msg! I did not feel sick after the meal. As stated in several posts, what is served here seems healthier.");
+#ans =predict_user_local_rating("C8W0VzsXaTg4YvciNTy3bg","I agree with most of the reviews. Great food, really cheap, absolutely worth it.  Seems like there is very little or no msg on their food. On the downside, msg does enhance the flavor so I did find the everything a tad blander than in a typical hakka restaurant. On the upside, there is no msg! I did not feel sick after the meal. As stated in several posts, what is served here seems healthier.");
 
-print ans
+#print ans
