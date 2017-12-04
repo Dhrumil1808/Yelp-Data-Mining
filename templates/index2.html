@@ -51,6 +51,7 @@ $(document).ready(function(){
 $("#predict").click(function()
 {
   var id=$("#sampleid").text();
+  var rating=$("#actualRating").text();
 
   $("#prediction").hide();
   $("#main").show();
@@ -65,13 +66,22 @@ $("#predict").click(function()
         $("#user-local").text("userlocal");
         $("#business-local").text("businesslocal");
         $("#global").text("global");
-        $("#uservalue").text("KNN prediction is: " + JSON.stringify(response.predictedRating.userLocalModelPrediction.knn));
-        $("#businessvalue").text("KNN prediction is: " +JSON.stringify(response.predictedRating.businessLocalModelPrediction.knn));
-        $("#globalvalue").text("KNN prediction is: " +JSON.stringify(response.predictedRating.globalModelPrediction.knn));
+        $("#actual").text("Actual Rating is: " + rating);
+        $("#userknearestvalue").text("KNeighbors prediction is: " + JSON.stringify(response.predictedRating.userLocalModelPrediction['KNeighbors Regressor']));
+        $("#businessknearestvalue").text("KNeighbors prediction is: " +JSON.stringify(response.predictedRating.businessLocalModelPrediction['KNeighbors Regressor']));
+        $("#globalknearestvalue").text("KNeighbors prediction is: " +JSON.stringify(response.predictedRating.globalModelPrediction['KNeighbors Regressor']));
+        $("#userlogisticvalue").text("Logistic prediction is: " + JSON.stringify(response.predictedRating.userLocalModelPrediction['Logistic Regression']));
+        $("#businesslogisticvalue").text("Logistic prediction is: " +JSON.stringify(response.predictedRating.businessLocalModelPrediction['Logistic Regression']));
+        $("#globallogisticvalue").text("Logistic prediction is: " +JSON.stringify(response.predictedRating.globalModelPrediction['Logistic Regression']));
+        $("#usersvrvalue").text("SVR prediction is: " + JSON.stringify(response.predictedRating.userLocalModelPrediction['SVR']));
+        $("#businesssvrvalue").text("SVR prediction is: " +JSON.stringify(response.predictedRating.businessLocalModelPrediction['SVR']));
+        $("#globalsvrvalue").text("SVR prediction is: " +JSON.stringify(response.predictedRating.globalModelPrediction['SVR']));
         $("#alpha").text("Alpha is: " + JSON.stringify(response.predictedRating.alpha));
         $("#beta").text("Beta is: " +JSON.stringify(response.predictedRating.beta));
         $("#gamma").text("Gamma is: " +JSON.stringify(response.predictedRating.gamma));
-        $("#final").text("Final is: "+ JSON.stringify(response.predictedRating.Final.knn));
+        $("#finalknearest").text("Final of Knearest is: "+ JSON.stringify(response.predictedRating.Final['KNeighbors Regressor']));
+        $("#finallogistic").text("Final of Logistic is: "+ JSON.stringify(response.predictedRating.Final['Logistic Regression']));
+        $("#finalsvr").text("Final of SVR is: "+ JSON.stringify(response.predictedRating.Final['SVR']));
 
     }
 });
@@ -100,15 +110,7 @@ $("#predict").click(function()
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
+          
           </ul>
         </div>
       </div>
@@ -164,6 +166,7 @@ $("#predict").click(function()
           <br/>
           <br/>
           <br/>
+          <h5 id="actual"> </h5>
           <div class="row">
 
             <div class="col-lg-4 col-md-6 mb-4">
@@ -173,9 +176,11 @@ $("#predict").click(function()
 
                   </h4>
                   <h5 id="alpha"> </h5>
-                  <h5 id="uservalue"></h5>
+                  <h5 id="userknearestvalue"></h5>
+                  <h5 id="userlogisticvalue"></h5>
+                  <h5 id="usersvrvalue"></h5>
                 </div>
-              
+
               </div>
             </div>
 
@@ -186,7 +191,9 @@ $("#predict").click(function()
 
                   </h4>
                   <h5 id="beta"> </h5>
-                  <h5 id="businessvalue"></h5>
+                  <h5 id="businessknearestvalue"></h5>
+                  <h5 id="businesslogisticvalue"></h5>
+                  <h5 id="businesssvrvalue"></h5>
                 </div>
               </div>
             </div>
@@ -197,13 +204,17 @@ $("#predict").click(function()
                   <h4 class="card-title" id="global">
                   </h4>
                   <h5 id="gamma"> </h5>
-                  <h5 id="globalvalue"></h5>
+                  <h5 id="globalknearestvalue"></h5>
+                  <h5 id="globallogisticvalue"></h5>
+                  <h5 id="globalsvrvalue"></h5>
                 </div>
               </div>
             </div>
 
 
-            <h5 id="final"> </div>
+            <div> <h5 id="finalknearest"> </h5>
+            <h5 id="finallogistic"> </h5>
+            <h5 id="finalsvr"> </h5> </div>
 <!--
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
