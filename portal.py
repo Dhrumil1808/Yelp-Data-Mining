@@ -1,4 +1,4 @@
-from flask import Flask, json
+from flask import Flask, json, render_template
 from flask_restful import reqparse, abort, Api, Resource
 from util import *
 import random
@@ -54,7 +54,7 @@ class PredictTestData(Resource):
         actualRating = test_ratings[int(testDataId)]
         businessId = test_business[int(testDataId)]
         reviewCSR = test_docs_csr[int(testDataId)]
-        reviewFullText = test_docs_full[int(testDataId)]
+        reviewFullText = test_docs[int(testDataId)]
         p = predictRating(userId, businessId, reviewFullText)
         predictedResponse = {}
         predictedResponse["userId"] = userId
@@ -100,8 +100,8 @@ class TodoList(Resource):
 ## Actually setup the Api resource routing here
 ##
 
-class MainPage():
-    def get():
+class MainPage(Resource):
+    def get(self):
         return render_template('index.html')
 
 api.add_resource(MainPage,'/')
