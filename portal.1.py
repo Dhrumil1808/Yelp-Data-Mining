@@ -54,10 +54,7 @@ class PredictTestData(Resource):
         actualRating = test_ratings[int(testDataId)]
         businessId = test_business[int(testDataId)]
         reviewCSR = test_docs_csr[int(testDataId)]
-        reviewNMF = test_docs_nmf[int(testDataId)]
-
-        reviewFullText = test_docs[int(testDataId)]
-        p = predictRating(userId, businessId, reviewFullText,reviewNMF)
+        p = predictRating(userId, businessId, reviewCSR)
         predictedResponse = {}
         predictedResponse["userId"] = userId
         predictedResponse["actualRating"] = actualRating
@@ -103,6 +100,8 @@ class TodoList(Resource):
 ##
 
 
+
+
 class MainPage(Resource):
     def get(self):
         return send_file('templates/index2.html')
@@ -110,7 +109,6 @@ class MainPage(Resource):
 @app.route('/templates/<path:path>')
 def send_js(path):
     return send_from_directory('templates', path)
-
 
 api.add_resource(MainPage,'/')
 api.add_resource(TodoList, '/todos')
