@@ -19,7 +19,7 @@ def transformRating(rating):
 def predictSentiment(train_reviews,review,ratings):
     n_features = 1000
 
-    tfidf_vectorizer = TfidfVectorizer(max_df=0.95, min_df=2,
+    tfidf_vectorizer = TfidfVectorizer(
                                    max_features=n_features,
                                    stop_words='english')
     tratings = transformRating(ratings)
