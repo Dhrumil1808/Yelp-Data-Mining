@@ -8,6 +8,7 @@ trainBusiness_business = load_pickle(trainBusiness_filename+'business.pickle')
 trainBusiness_docs_csr = load_pickle(trainBusiness_filename+'docs_csr.pickle')
 trainBusiness_unique_users = set(trainBusiness_user)
 trainBusiness_unique_business = set(trainBusiness_business)
+train_docs_full = load_pickle(trainBusiness_filename+'docs_full.pickle')
 
 def getTrainBusinessAllUsers():
     return trainBusiness_user
@@ -17,6 +18,12 @@ def getTrainBusinessAllBusiness():
 
 def getTrainBusinessAllActualRating():
     return trainBusiness_ratings
+
+def getTrainBusinessAllDocFull():
+    return train_docs_full
+
+def getTrainBusinessAllDocFullI(indices):
+    return [train_docs_full[i] for i in indices]
 
 def getTrainBusinessAllDocCSR():
     return trainBusiness_docs_csr
@@ -39,4 +46,3 @@ def getTrainBusinessUniqueUsers():
 
 def getTrainBusinessUniqueBusiness():
     return trainBusiness_unique_business
-

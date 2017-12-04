@@ -54,8 +54,10 @@ class PredictTestData(Resource):
         actualRating = test_ratings[int(testDataId)]
         businessId = test_business[int(testDataId)]
         reviewCSR = test_docs_csr[int(testDataId)]
+        reviewNMF = test_docs_nmf[int(testDataId)]
+
         reviewFullText = test_docs[int(testDataId)]
-        p = predictRating(userId, businessId, reviewFullText)
+        p = predictRating(userId, businessId, reviewFullText,reviewNMF)
         predictedResponse = {}
         predictedResponse["userId"] = userId
         predictedResponse["actualRating"] = actualRating

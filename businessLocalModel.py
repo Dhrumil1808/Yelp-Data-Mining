@@ -2,6 +2,10 @@ from trainBusinessDataDirectory import *
 from testDataDirectory import *
 from util import *
 from sklearn.neighbors import KNeighborsRegressor
+from SentimentAnalysis import *
+from NMFModel import *
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVR
 
 def getBusinessTrainData(businessId):
     reviewrows =[]
@@ -33,9 +37,9 @@ def predict_business_local_rating(businessId,reviewdata):
     print len(reviewrows)
 
     train_reviews = getTrainBusinessAllDocFullI(reviewrows)
+    predicted_sentiment = predictSentiment(train_reviews,reviewdata,reviewratings)
     train_reviews.append(reviewdata)
-
-    reviewratings.append(4.0)
+    reviewratings.append(predicted_sentiment)
 
     nmdf,vocab = nmfsentimentModel(train_reviews,reviewratings, n_components=5,n_top_words=10,n_features=1000)
     test_reviewrows,test_reviewratings = getBusinessTestData(businessId)

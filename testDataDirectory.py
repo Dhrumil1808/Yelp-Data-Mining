@@ -7,6 +7,9 @@ test_ratings = load_pickle(test_filename+'rating.pickle')
 test_business = load_pickle(test_filename+'business.pickle')
 test_docs_csr = load_pickle(test_filename+'docs_csr.pickle')
 test_docs = load_pickle(test_filename +'docs_full.pickle')
+test_docs_nmf = load_pickle(test_filename+'docs_nmf.pickle')
+
+
 test_unique_users = set(test_user)
 test_unique_business = set(test_business)
 
@@ -30,6 +33,9 @@ def getTestBusiness(i):
 
 def getTestActualRating(i):
     return test_ratings[i]
+
+def getTestDocNMF(i):
+    return test_docs_nmf[i]
 
 def getTestDocCSR(i):
     return test_docs_csr[i]

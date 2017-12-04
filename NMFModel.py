@@ -70,6 +70,17 @@ def nmfsentimentModel(data_samples,rating, n_components=5,n_top_words=10,n_featu
 
 
 
+def nmf_global():
+    nmf = load_pickle('nmf.pickle')
+    vocab = load_pickle('vocab.pickle')
+    trainTopics = trainTopics / np.sum(trainTopics, axis=1, keepdims=True)
+    d, f = trainTopics.shape
+    cols = ["Topic"+str(i) for i in xrange(1, f+1)]
+    nmfDF = pd.DataFrame(trainTopics, columns=cols)
+    return nmfDF
+
+
+
 
 def save_pickle(matrix, filename):
     with open(filename, 'wb') as outfile:

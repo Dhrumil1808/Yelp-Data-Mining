@@ -6,6 +6,7 @@ from NMFModel import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.kernel_ridge import KernelRidge
 from sklearn.svm import SVR
+from SentimentAnalysis import *
 
 def getUserTrainData(userid):
     reviewrows =[]
@@ -37,9 +38,12 @@ def predict_user_local_rating(userid,reviewdata):
     print len(reviewrows)
 
     train_reviews = getTrainAllDocFullI(reviewrows)
+    print len(train_reviews)
+
+    predicted_sentiment = predictSentiment(train_reviews,reviewdata,reviewratings)
     train_reviews.append(reviewdata)
 
-    reviewratings.append(4.0)
+    reviewratings.append(predicted_sentiment)
 
     nmdf,vocab = nmfsentimentModel(train_reviews,reviewratings, n_components=5,n_top_words=10,n_features=1000)
     test_reviewrows,test_reviewratings = getUserTestData(userid)
